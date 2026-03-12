@@ -130,7 +130,7 @@ class InstallerApp(tk.Tk):
         hdr.pack(fill=tk.X)
         tk.Label(hdr, text="  MULLVAD  LAX PING TOOL",
                  font=("Courier New", 16, "bold"), fg=ACCENT, bg=BG2).pack(side=tk.LEFT, padx=20)
-        tk.Label(hdr, text="Installer  v2.0",
+        tk.Label(hdr, text="Installer  v1.0",
                  font=MONO, fg=FG_DIM, bg=BG2).pack(side=tk.RIGHT, padx=20)
 
         # Body uses a left sidebar + right panel layout
@@ -662,8 +662,13 @@ class InstallerApp(tk.Tk):
         try:
             import winreg  # noqa: F401 — only available on Windows
             if target == "desktop":
-                desktop = Path(os.path.join(os.environ.get("USERPROFILE", "~"),
-                                            "Desktop"))
+                # Handle OneDrive-redirected Desktop
+                candidates = [
+                    Path(os.environ.get("USERPROFILE", "~")) / "OneDrive" / "Desktop",
+                    Path(os.environ.get("USERPROFILE", "~")) / "Desktop",
+                    Path(os.path.expanduser("~")) / "Desktop",
+                ]
+                desktop = next((p for p in candidates if p.exists()), candidates[1])
                 shortcut = desktop / "Mullvad Ping Tool.bat"
             else:
                 sm = Path(os.environ.get("APPDATA", "~")) / \
