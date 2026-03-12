@@ -51,7 +51,7 @@ REQUIRED_PACKAGES = [
 PYTHON_DOWNLOAD_WIN   = "https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe"
 PYTHON_DOWNLOAD_MAC   = "https://www.python.org/ftp/python/3.12.3/python-3.12.3-macos11.pkg"
 MAIN_SCRIPT_NAME      = "mullvad_ping.py"
-MAIN_SCRIPT_GITHUB    = "https://raw.githubusercontent.com/YOUR_USERNAME/mullvad-wg-monitor/main/mullvad_ping.py"
+MAIN_SCRIPT_GITHUB    = "https://raw.githubusercontent.com/Londopy/mullvad-wg-monitor/main/mullvad_ping.py"
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
 
